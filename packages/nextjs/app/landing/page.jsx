@@ -46,7 +46,7 @@ export default function page() {
       totalRaised: 150491562,
       fundraisingGoal: 190204512,
       startingDate: "SEP 9",
-      imageUrl: "/images/img2.jpg", // Updated path
+      imageUrl: "/images/Img2.jpg", // Updated path
     },
     {
       title: "CryptoHub",
