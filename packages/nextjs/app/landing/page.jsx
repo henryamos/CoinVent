@@ -46,7 +46,7 @@ export default function page() {
       totalRaised: 150491562,
       fundraisingGoal: 190204512,
       startingDate: "SEP 9",
-      imageUrl: "../../public/images/detailsImg.jpg",
+      imageUrl: "/images/img2.jpg", // Updated path
     },
     {
       title: "CryptoHub",
@@ -56,7 +56,7 @@ export default function page() {
       totalRaised: 70555198,
       fundraisingGoal: 105154781,
       startingDate: "SEP 23",
-      imageUrl: "../../public/images/Img2.jpg",
+      imageUrl: "/images/img1.jpg",
     },
     {
       title: "GitLab",
@@ -65,7 +65,7 @@ export default function page() {
       totalRaised: 12491432,
       fundraisingGoal: 78204512,
       startingDate: "Nov 1",
-      imageUrl: "../../public/images/img5.jpg",
+      imageUrl: "/images/img3.jpg",
     },
   ];
 
@@ -75,7 +75,10 @@ export default function page() {
       description: "Designs and deploys autonomous delivery vehicles specifically for local goods transportation.",
       totalRaised: 1204512,
       participants: 1287,
-      imageUrl: "../../public/images/img5.jpg",
+      imageUrl: "/images/img4.jpg",
+      fundraisingGoal: 78204512,
+      startingDate: "Nov 1",
+      status: "Started",
     },
     {
       title: "UiPath",
@@ -83,14 +86,20 @@ export default function page() {
         "UiPath provides a comprehensive platform that enables organizations to design, deploy, and manage software.",
       totalRaised: 1231004,
       participants: 2232,
-      imageUrl: "../../public/images/Img2.jpg",
+      imageUrl: "/images/img5.jpg",
+      fundraisingGoal: 78204512,
+      startingDate: "Nov 1",
+      status: "Started",
     },
     {
       title: "SpaceX",
       description: "Aims to revolutionize space travel with innovations in space exploration and rocket technology.",
       totalRaised: 1204512,
       participants: 1287,
-      imageUrl: "../../public/images/img3.jpg",
+      imageUrl: "/images/img6.jpg",
+      fundraisingGoal: 78204512,
+      startingDate: "Nov 1",
+      status: "Started",
     },
   ];
 
