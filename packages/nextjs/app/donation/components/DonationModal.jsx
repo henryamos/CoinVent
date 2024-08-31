@@ -70,7 +70,7 @@ const DonationModal = ({ isOpen, onClose }) => {
                   id="donationAmount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-40 px-4 py-2 rounded-md border border-gray-300 text-black"
+                  className="w-40 px-4 py-2 rounded-md border border-gray-300 text-white"
                   placeholder="Enter amount"
                   required
                 />
