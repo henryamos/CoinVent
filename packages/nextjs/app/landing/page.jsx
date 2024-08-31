@@ -1,15 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+// import { useEffect } from "react";
 // pages/index.js
 import WhyCoinvent from "./components/AboutUs";
 import FutureProjects from "./components/FutureProject";
 import Hero from "./components/Hero";
 import Layout from "./components/Layout";
 import OngoingProjects from "./components/OngoingProject";
-import { useQuery } from "@apollo/client";
-import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-import { GET_ALL_CAMPAIGNS } from "~~/query";
+
+// import { useQuery } from "@apollo/client";
+// import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+// import { GET_ALL_CAMPAIGNS } from "~~/query";
 
 export default function page() {
   // const { data, error } = useQuery(GET_ALL_CAMPAIGNS);
