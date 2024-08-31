@@ -1,12 +1,12 @@
 COINVENT PRODUCT REQUIREMENT DOCUMENT (PRD)
 
+Front-end link on vercel:[https://coinvent.vercel.app/landing]
 
+PitchDeck Link: [https://www.canva.com/design/DAGPP3n5BMs/P64-V6T3gN1YvpQLvrcAXA/view?utm_content=DAGPP3n5BMs&utm_campaign=designshare&utm_medium=link&utm_source=editor]
 
-PitchDeck Link: (https://www.canva.com/design/DAGPP3n5BMs/P64-V6T3gN1YvpQLvrcAXA/view?utm_content=DAGPP3n5BMs&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+Figma Link: [https://www.figma.com/file/DUYNo7MkDhjMsFHoTUCOXm?node-id=44:748&m=dev&t=V61KGYatkwQJyswo-1&locale=en&type=design]
 
-Figma Link: (https://www.figma.com/file/DUYNo7MkDhjMsFHoTUCOXm?node-id=44:748&m=dev&t=V61KGYatkwQJyswo-1&locale=en&type=design)
-
-Miro Link: (https://miro.com/app/board/uXjVKkP6u6I=/?share_link_id=595122630031)
+Miro Link: [https://miro.com/app/board/uXjVKkP6u6I=/?share_link_id=595122630031]
 
 
 Introduction: 
