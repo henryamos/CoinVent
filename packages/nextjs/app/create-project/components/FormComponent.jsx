@@ -1,8 +1,39 @@
 // components/FormComponent.js
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
+
+// components/FormComponent.js
 
 // components/FormComponent.js
 
@@ -35,8 +66,8 @@ const FormComponent = () => {
   const teamBackgroundRef = useRef();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleSubmit = e => {
+  const { writeContractAsync, isMining, isPending, isSuccess } = useScaffoldWriteContract("CrowdFunding");
+  const handleSubmit = async e => {
     e.preventDefault();
 
     // Check if all fields are filled
@@ -45,7 +76,7 @@ const FormComponent = () => {
       !projectCategoryRef.current.value ||
       !projectDescriptionRef.current.value ||
       !fundingGoalsRef.current.value ||
-      !displayPictureRef.current.value ||
+      // !displayPictureRef.current.value ||
       !cryptoChoiceRef.current.value ||
       !projectTimelineRef.current.value ||
       !teamBackgroundRef.current.value
@@ -53,11 +84,33 @@ const FormComponent = () => {
       alert("Please fill in all fields.");
       return;
     }
+    console.log(
+      projectTitleRef.current.value,
+      projectCategoryRef.current.value,
+      projectDescriptionRef.current.value,
+      fundingGoalsRef.current.value,
+      cryptoChoiceRef.current.value,
+      projectTimelineRef.current.value,
+    );
 
+    await writeContractAsync({
+      functionName: "createCampaign",
+      args: [
+        projectTitleRef.current.value, // title: string
+        projectCategoryRef.current.value, // category: string
+        BigInt(fundingGoalsRef.current.value), // fundingGoal: uint256 (convert to BigInt)
+        "", // image: string (assuming empty for now)
+        cryptoChoiceRef.current.value, // cryptoChoice: string
+        BigInt(projectTimelineRef.current.value), // duration: uint256 (convert to BigInt)
+        projectDescriptionRef.current.value, // description: string
+      ],
+    });
     // Display modal
-    setIsModalOpen(true);
   };
 
+  useEffect(() => {
+    setIsModalOpen(isMining, isPending, isSuccess);
+  }, [isMining, isPending, isSuccess]);
   const handleCloseModal = () => {
     setIsModalOpen(false);
     // Reset form fields

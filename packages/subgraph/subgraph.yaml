@@ -5,22 +5,31 @@ schema:
   file: ./src/schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: YourContract
-    network: localhost
+    name: CrowdFunding
+    network: optimism-sepolia
     source:
-      abi: YourContract
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      abi: CrowdFunding
+      address: "0xEA0c27DDbEE469B1860B4e9C33663b77e52cbEdC"
+      startBlock: 16635328
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - Greeting
-        - Sender
+        - Project
+        - Donation
+        - Withdrawal
+        - Refund
       abis:
-        - name: YourContract
-          file: ./abis/localhost_YourContract.json
+        - name: CrowdFunding
+          file: ./abis/optimismSepolia_CrowdFunding.json # Ensure the ABI is correctly exported and placed here
       eventHandlers:
-        - event: GreetingChange(indexed address,string,bool,uint256)
-          handler: handleGreetingChange
+        - event: CampaignCreated(uint256,address)
+          handler: handleCampaignCreated
+        - event: DonationReceived(uint256,address,uint256)
+          handler: handleDonationReceived
+        - event: FundsWithdrawn(uint256,address,uint256)
+          handler: handleFundsWithdrawn
+        - event: RefundIssued(uint256,address,uint256)
+          handler: handleRefundIssued
       file: ./src/mapping.ts

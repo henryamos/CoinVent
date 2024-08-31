@@ -27,7 +27,7 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex bg-black flex-col min-h-screen">
         {/* <Header /> */}
         <main className="relative flex flex-col flex-1">{children}</main>
         {/* <Footer /> */}
@@ -53,8 +53,9 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
   useEffect(() => {
     setMounted(true);
   }, []);
+  //https://api.studio.thegraph.com/query/87880/coinvent/v0.0.2
 
-  const subgraphUri = "http://localhost:8000/subgraphs/name/scaffold-eth/your-contract";
+  const subgraphUri = "https://api.studio.thegraph.com/query/87880/coinvent/version/latest";
   const apolloClient = new ApolloClient({
     uri: subgraphUri,
     cache: new InMemoryCache(),

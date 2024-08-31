@@ -1,17 +1,51 @@
-type Greeting @entity {
+# Project: This entity represents a crowdfunding campaign. It includes all relevant fields as per the smart contract.
+# Donation: This entity tracks donations made to specific campaigns. Each donation is associated with a Project.
+# CampaignState Enum: Represents the possible states of a campaign (Active, Successful, Unsuccessful).
+type Project @entity {
   id: ID!
-  sender: Sender!
-  greeting: String!
-  premium: Boolean
-  value: BigInt
-  createdAt: BigInt!
-  transactionHash: String!
+  title: String!
+  category: String!
+  fundingGoal: BigInt!
+  image: String
+  cryptoChoice: String!
+  duration: BigInt!
+  description: String
+  creator: Bytes!
+  amountCollected: BigInt!
+  state: CampaignState!
+  endTime: BigInt!
+  donations: [Donation!]! @derivedFrom(field: "project")
+  withdrawals: [Withdrawal!]! @derivedFrom(field: "project")
+  refunds: [Refund!]! @derivedFrom(field: "project")
 }
 
-type Sender @entity {
+type Donation @entity {
   id: ID!
-  address: Bytes!
-  greetings: [Greeting!] @derivedFrom(field: "sender")
-  createdAt: BigInt!
-  greetingCount: BigInt!
+  project: Project!
+  donor: Bytes!
+  amount: BigInt!
+}
+
+# Withdrawal Entity: Represents when funds are withdrawn from a campaign, including the recipient, amount, and timestamp.
+type Withdrawal @entity {
+  id: ID!
+  project: Project!
+  recipient: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+# Refund Entity: Represents refunds issued to contributors, tracking the recipient, amount, and timestamp.
+type Refund @entity {
+  id: ID!
+  project: Project!
+  recipient: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+enum CampaignState {
+  Active
+  Successful
+  Unsuccessful
 }

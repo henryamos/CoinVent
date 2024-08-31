@@ -1,11 +1,16 @@
+"use client";
+
 // pages/withdraw.js
-import Layout from './components/Layout';
-import WithdrawForm  from'./components/WidthdrawForm'
+import Navbar from "../landing/components/Navbar";
+import WithdrawForm from "./components/WidthdrawForm";
+import { Footer } from "~~/components/Footer";
+
 export default function page() {
   return (
-    <Layout>
-    <WithdrawForm/>
-    </Layout>
-    
+    <div>
+      <Navbar />
+      <WithdrawForm />
+      <Footer />
+    </div>
   );
 }

@@ -1,35 +1,65 @@
-import { BigInt, Address } from "@graphprotocol/graph-ts";
+import { BigInt } from "@graphprotocol/graph-ts";
 import {
-  YourContract,
-  GreetingChange,
-} from "../generated/YourContract/YourContract";
-import { Greeting, Sender } from "../generated/schema";
+  CrowdFunding,
+  CampaignCreated,
+  DonationReceived,
+  FundsWithdrawn,
+  RefundIssued,
+} from "../generated/CrowdFunding/CrowdFunding";
+import { Project, Donation, Withdrawal, Refund } from "../generated/schema";
 
-export function handleGreetingChange(event: GreetingChange): void {
-  let senderString = event.params.greetingSetter.toHexString();
+export function handleCampaignCreated(event: CampaignCreated): void {
+  let project = new Project(event.params.campaignId.toString());
 
-  let sender = Sender.load(senderString);
+  project.title = "";
+  project.category = "";
+  project.fundingGoal = BigInt.zero();
+  project.image = "";
+  project.cryptoChoice = "";
+  project.duration = BigInt.zero();
+  project.description = "";
+  project.creator = event.params.creator;
+  project.amountCollected = BigInt.zero();
+  project.state = "Active";
+  project.endTime = BigInt.zero();
 
-  if (sender === null) {
-    sender = new Sender(senderString);
-    sender.address = event.params.greetingSetter;
-    sender.createdAt = event.block.timestamp;
-    sender.greetingCount = BigInt.fromI32(1);
-  } else {
-    sender.greetingCount = sender.greetingCount.plus(BigInt.fromI32(1));
+  project.save();
+}
+
+export function handleDonationReceived(event: DonationReceived): void {
+  let donation = new Donation(event.transaction.hash.toHex());
+
+  donation.project = event.params.campaignId.toString();
+  donation.donor = event.params.donor;
+  donation.amount = event.params.amount;
+
+  let project = Project.load(event.params.campaignId.toString());
+  if (project) {
+    project.amountCollected = project.amountCollected.plus(event.params.amount);
+    project.save();
   }
 
-  let greeting = new Greeting(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
+  donation.save();
+}
 
-  greeting.greeting = event.params.newGreeting;
-  greeting.sender = senderString;
-  greeting.premium = event.params.premium;
-  greeting.value = event.params.value;
-  greeting.createdAt = event.block.timestamp;
-  greeting.transactionHash = event.transaction.hash.toHex();
+export function handleFundsWithdrawn(event: FundsWithdrawn): void {
+  let withdrawal = new Withdrawal(event.transaction.hash.toHex());
 
-  greeting.save();
-  sender.save();
+  withdrawal.project = event.params.campaignId.toString();
+  withdrawal.recipient = event.params.recipient;
+  withdrawal.amount = event.params.amount;
+  withdrawal.timestamp = event.block.timestamp;
+
+  withdrawal.save();
+}
+
+export function handleRefundIssued(event: RefundIssued): void {
+  let refund = new Refund(event.transaction.hash.toHex());
+
+  refund.project = event.params.campaignId.toString();
+  refund.recipient = event.params.recipient;
+  refund.amount = event.params.amount;
+  refund.timestamp = event.block.timestamp;
+
+  refund.save();
 }

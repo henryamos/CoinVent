@@ -121,13 +121,19 @@ const config: HardhatUserConfig = {
   },
   // configuration for harhdat-verify plugin
   etherscan: {
-    apiKey: `${etherscanApiKey}`,
-  },
-  // configuration for etherscan-verify from hardhat-deploy plugin
-  verify: {
-    etherscan: {
-      apiKey: `${etherscanApiKey}`,
+    apiKey: {
+      optimismSepolia: `${etherscanApiKey}`,
     },
+    customChains: [
+      {
+        network: "optimismSepolia",
+        chainId: 11155420,
+        urls: {
+          apiURL: "https://api-sepolia-optimistic.etherscan.io/api", // Corrected API URL
+          browserURL: "https://sepolia-optimistic.etherscan.io", // Corrected browser URL
+        },
+      },
+    ],
   },
   sourcify: {
     enabled: false,
