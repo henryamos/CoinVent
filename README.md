@@ -1,81 +1,106 @@
-# 🏗 Scaffold-ETH 2
+COINVENT PRODUCT REQUIREMENT DOCUMENT (PRD)
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+PitchDeck Link: (https://www.canva.com/design/DAGPP3n5BMs/P64-V6T3gN1YvpQLvrcAXA/view?utm_content=DAGPP3n5BMs&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+Figma Link: (https://www.figma.com/file/DUYNo7MkDhjMsFHoTUCOXm?node-id=44:748&m=dev&t=V61KGYatkwQJyswo-1&locale=en&type=design)
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+Miro Link: (https://miro.com/app/board/uXjVKkP6u6I=/?share_link_id=595122630031)
 
-## Requirements
 
-Before you begin, you need to install the following tools:
+Introduction: 
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+Coinvent is a decentralized crowdfunding platform built on the Optimism (Layer 2 scaling solution on Ethereum) that enables entrepreneurs to raise funds for their projects on in cryptocurrency
+We aim to leverage Optimism's scalability, low transaction fees, and compatibility with Ethereum to enhance user experience.
 
-## Quickstart
 
-To get started with Scaffold-ETH 2, follow the steps below:
+ Goal:
+To enable startups in the web3 space to raise funds through crypto investments. 
 
-1. Clone this repo & install dependencies
 
-```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
-yarn install
-```
 
-2. Run a local network in the first terminal:
+FEATURES AND REQUIREMENTS
 
-```
-yarn chain
-```
+ User Roles
+Startups:
+Create and manage crowdfunding campaigns.
+Set funding goals, deadlines, and reward structures.
+Track campaign progress and investor interactions.
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
+Investors:
+Browse and search for active campaigns.
+Invest in projects using Op, Eth or other compatible Stablecoins 
+Monitor investments and receive rewards.
 
-3. On a second terminal, deploy the test contract:
+Admin:
+Monitor and manage platform activity.
+Review and approve campaigns.
+Handle disputes and ensure compliance.
 
-```
-yarn deploy
-```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
-4. On a third terminal, start your NextJS app:
+ FUNCTIONAL REQUIREMENT 
 
-```
-yarn start
-```
+Campaign Management
+Create Project: Allow startups to set up new campaigns including project details, funding goals, timelines, and reward tiers.
+Edit Project: Enable updates to campaign information.
+Project Details: Display real-time status of ongoing projects including funding progress and remaining time.
+Withdrawal: Withdraw funds raised after meeting requirements and deadline
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+ Investment Process
+Browse Campaigns: Provide a searchable and filterable list of active projects.
+Invest/Donate : Facilitate investments using OP, Eth or other stable coins, including transaction processing and confirmation.
+Rewards: Implement a mechanism to distribute rewards to investors based on campaign terms.
 
-**What's next**:
+Smart Contracts
+Fund Management: Use Optimism L2 on Ethereum smart contracts to handle funds, ensuring they are only released when certain conditions are met.
+Automatic Refunds: Implement functionality to automatically refund investors if a campaign fails to meet its funding goal.
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
-- Edit your smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
+User Accounts
+Registration and Login: Allow users to create accounts and log in using their wallets (e.g., MetaMask).
+Profile Management: Enable users to manage their profiles and view their investment history.
 
-## Documentation
+Administration
+Campaign Approval: Admins should review and approve startup campaigns before they go live.
+Platform Monitoring: Provide tools for monitoring platform activity and resolving disputes.
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+Security
+Smart Contract Audits: Ensure all smart contracts are audited for vulnerabilities.
+Data Protection: Implement measures to protect user data and transaction information.
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
 
-## Contributing to Scaffold-ETH 2
 
-We welcome contributions to Scaffold-ETH 2!
+ NON-FUNCTIONAL REQUIREMENTS 
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+Scalability: Ensure the platform can handle a growing number of users and transactions.
+Performance: Optimize for fast transaction processing and minimal downtime.
+Usability: Design an intuitive user interface for both startups and investors.
+
+Explanation of Core Feature Points
+Home Page: The initial page where users select to log in or sign up.
+Login / Signup:
+Login: Existing users (Investor, Startup, or Admin) log in using their wallet.
+Sign Up: New users connect their Ethereum wallet and create an account.
+Wallet Login / Wallet Setup:
+Wallet Login: Existing users authenticate with their Ethereum wallet.
+Wallet Setup: New users set up and connect their wallet.
+User Dashboards:
+Investor Dashboard: Allows investors to browse and invest in campaigns.
+Startup Dashboard: Allows startups to create and manage campaigns/projects.
+Admin Dashboard: Provides tools for reviewing, approving, and monitoring campaigns and platform activity.
+Investor Features:
+Browse Campaigns: Search and view available crowdfunding projects.
+Select project & Donate: Choose a campaign and make an investment using Eth, Op or optimism compatible stable coin.
+Confirm & Pay: Complete the investment process with Ethereum transaction confirmation.
+View Investments: Monitor and manage investments made.
+Startup Features:
+Create Campaign: Set up new crowdfunding campaigns including details, goals, and rewards.
+Edit Campaign: Update or modify existing campaigns.
+Track Campaign Progress: Monitor the progress of active campaigns.
+Admin Features:
+Review Campaigns: Review startup campaigns for approval.
+Approve/Reject: Approve or reject campaigns based on review criteria.
+Monitor Platform Activity: Oversee all platform activities to ensure smooth operation.
+Handle Disputes: Address and resolve any disputes or issues that arise.
+Logout: Users log out from the platform after completing their tasks.
