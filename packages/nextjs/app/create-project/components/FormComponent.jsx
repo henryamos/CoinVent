@@ -173,11 +173,11 @@ const FormComponent = () => {
             Funding Goals
           </label>
           <input
-            type="text"
+            type="number"
             id="fundingGoals"
             ref={fundingGoalsRef}
             className="w-full px-3 py-2 rounded-md border border-gray-300"
-            placeholder="Specify the amount of funding needed to complete the project"
+            placeholder="Specify the amount of funding needed to complete the project(numbers only)"
             required
           />
         </div>
@@ -215,11 +215,11 @@ const FormComponent = () => {
             Project Timeline
           </label>
           <input
-            type="text"
+            type="number"
             id="projectTimeline"
             ref={projectTimelineRef}
             className="w-full px-3 py-2 rounded-md border border-gray-300"
-            placeholder="Duration (include starting and completion date)"
+            placeholder="Project Timeline in months(number only)"
             required
           />
         </div>
